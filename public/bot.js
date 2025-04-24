@@ -44,7 +44,7 @@ async function processUserInput(e) {
             const typingIndicator = addMessage("Bot schreibt...", false);
             
             // API-Aufruf an unseren Backend-Server
-            const response = await fetch('http://localhost:3000/api/chat', {
+            const response = await fetch('https://restaurant-chatbot-t2zf.onrender.com/api/chat', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
