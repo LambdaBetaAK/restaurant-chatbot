@@ -7,7 +7,10 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: 'https://restaurant-chatbot-t2zf.onrender.com', // Ersetze dies mit deiner Render-Domain
+  credentials: true
+}));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -30,7 +33,7 @@ app.post('/api/chat', async (req, res) => {
             parts: [{ text: msg.content }]
         }));
 
-        const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+        const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
         const chat = model.startChat({
             history: formattedMessages.slice(0, -1),
             generationConfig: {
